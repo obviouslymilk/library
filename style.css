@@ -57,13 +57,14 @@ body, html {
     margin: 2em;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
     gap: 2rem;
 }
 
 .book-card {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr;
     justify-items: center;
     padding: 1em;
 
@@ -77,17 +78,21 @@ body, html {
 }
 
 .book-title {
-    font-size: 2rem;
+    font-size: 1.8em;
     font-weight: 600;
+    padding-bottom: 6px;
     align-self: center;
+    text-align: center;
 }
 
 .book-author {
     font-size: 1rem;
+    text-align: center;
 }
 
 .book-pages {
     align-self: flex-end;
+    text-align: center;
 }
 
 .new-button-container {
