@@ -5,6 +5,7 @@ const booksContainer = document.querySelector('.books-container');
 const bookAddForm = document.querySelector('.form-container');
 const bookFormSubmit = document.querySelector('.submit');
 const bookFormClose = document.querySelector('.close');
+const formPopup = document.querySelector('.form-popup')
 
 function Book(title, author, pages, read) {
         this.title = title;
@@ -21,24 +22,29 @@ Book.prototype.info = function() {
 }
 
 function BookCard(book) {
-    return `
-    <div class='book-card' data-pos=${book.index}>
-        <div class='book-title'>«${book.title}»</div>
-        <div class='book-author'>by ${book.author}</div>
-        <div class='book-pages'>${book.pages} pages</div>
-    </div>
-    `
-}
+    var bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
+    bookCard.dataset.pos = book.index;
 
-function addBookToLibrary(book) {
-    myLibrary.push(book)
+    bookCard.insertAdjacentHTML('beforeend', 
+        `<div class='book-title'>«${book.title}»</div>
+        <div class='book-author'>by ${book.author}</div>
+        <div class='book-pages'>${book.pages} pages</div>`
+    )
+
+    var readButton = document.createElement('button');
+    readButton.classList.add('read');
+    readButton.addEventListener('click', e => e.target.classList.toggle('on'))
+    bookCard.insertAdjacentElement('beforeend', readButton);
+
+    return bookCard;
 }
 
 function fetchLibrary() {
     booksContainer.replaceChildren('');
 
     myLibrary.forEach(
-        e => booksContainer.insertAdjacentHTML('beforeend', BookCard(e))
+        e => booksContainer.insertAdjacentElement('beforeend', BookCard(e))
     );
 }
 
@@ -49,12 +55,19 @@ function submitForm(e) {
     pages = data.get('pages');
 
 
-    book = new Book(title, author, pages, false);
+    new Book(title, author, pages, false);
     
     fetchLibrary();
     e.preventDefault();
+
+    bookAddForm.reset();
+    formPopup.style.display = 'none'
 }
+
 
 fetchLibrary();
 
 bookAddForm.addEventListener('submit', submitForm)
+
+newButton.addEventListener('click', e => formPopup.style.display = 'flex')
+bookFormClose.addEventListener('click', e => formPopup.style.display = 'none')
