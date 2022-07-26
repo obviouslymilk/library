@@ -34,7 +34,14 @@ function BookCard(book) {
 
     var readButton = document.createElement('button');
     readButton.classList.add('read');
-    readButton.addEventListener('click', e => e.target.classList.toggle('on'))
+    console.log(book.read);
+    if (book.read === true) {
+        readButton.classList.add('on');
+    }
+    readButton.addEventListener('click', e => {
+        e.target.classList.toggle('on')
+        book.read = true
+    })
 
     var removeButton = document.createElement('button');
     removeButton.classList.add('remove');
