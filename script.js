@@ -35,7 +35,16 @@ function BookCard(book) {
     var readButton = document.createElement('button');
     readButton.classList.add('read');
     readButton.addEventListener('click', e => e.target.classList.toggle('on'))
+
+    var removeButton = document.createElement('button');
+    removeButton.classList.add('remove');
+    removeButton.addEventListener('click', e => {
+        e.target.parentElement.remove();
+    });
+    removeButton.innerText = 'Remove';
+
     bookCard.insertAdjacentElement('beforeend', readButton);
+    bookCard.insertAdjacentElement('beforeend', removeButton);
 
     return bookCard;
 }
