@@ -1,3 +1,4 @@
+//! ПОФИКСТИЬ УДАЛЕНИЕ
 let myLibrary = [];
 
 const newButton = document.querySelector('.new-button');
@@ -17,7 +18,7 @@ class Book {
 
         myLibrary.push(this);
     }
-    
+
     info() {
         return this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read" : "nor read yet") + ".";
     }
