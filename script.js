@@ -7,19 +7,22 @@ const bookFormSubmit = document.querySelector('.submit');
 const bookFormClose = document.querySelector('.close');
 const formPopup = document.querySelector('.form-popup')
 
-function Book(title, author, pages, read) {
+class Book {
+    constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.index = myLibrary.length
+        this.index = myLibrary.length;
 
-        myLibrary.push(this)
+        myLibrary.push(this);
+    }
+    
+    info() {
+        return this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read" : "nor read yet") + ".";
+    }
 }
 
-Book.prototype.info = function() {
-    return this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read" : "nor read yet") + ".";
-}
 
 function BookCard(book) {
     var bookCard = document.createElement('div');
