@@ -62,7 +62,7 @@ body, html {
     gap: 2rem;
 }
 
-.book-card {
+.book {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 0.5fr 0.5fr;
@@ -84,16 +84,19 @@ body, html {
     padding-bottom: 6px;
     align-self: center;
     text-align: center;
+    margin: 0;
 }
 
 .book-author {
     font-size: 1rem;
     text-align: center;
+    margin: 0;
 }
 
 .book-pages {
     align-self: flex-end;
     text-align: center;
+    margin: 0;
 }
 
 .read {
@@ -122,20 +125,11 @@ body, html {
     color: #818181;
 }
 
-.read:after {
-    content: 'Not read';
-}
-
 .read.on {
     border: 1px solid #14532d2f;
     background-color: #bbf7d0;
     color: #14532d;
 }
-
-.read.on:after {
-    content: 'Read';
-}
-
 
 
 .new-button-container {
@@ -227,6 +221,7 @@ body, html {
 
 .buttons-container {
     display: flex;
+    width: 100%;
     gap: 8px;
 }
 
